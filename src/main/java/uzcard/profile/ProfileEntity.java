@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "profile")
 public class ProfileEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
