@@ -18,4 +18,9 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity,String> 
     @Transactional
     @Query("Update ProfileEntity Set username = ?2,password = ?3 where id = ?1")
     Integer updateKeys(String profileId,String username,String password);
+
+    @Modifying
+    @Transactional
+    @Query("Update ProfileEntity Set status = ?2 where id = ?1 ")
+    Integer changeStatus(String id, ProfileStatus status);
 }

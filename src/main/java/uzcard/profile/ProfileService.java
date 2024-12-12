@@ -44,6 +44,10 @@ public class ProfileService {
     public FilterResultDTO<ProfileDTO> getByFilter(ProfileDTO filter,Integer page, Integer size) {
         return profileCustomRepository.filter(filter, page, size);
     }
+
+    public String changeStatus(ChangeStatusDTO statusDTO) {
+        return "UPDATED "+profileRepository.changeStatus(statusDTO.getId(),statusDTO.getStatus());
+    }
 }
 
 

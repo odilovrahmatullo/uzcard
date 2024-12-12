@@ -36,6 +36,13 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.getByFilter(filter,page,size));
     }
 
+    @PutMapping("/change-status")
+    public ResponseEntity<?> changeStatus(@Valid @RequestBody ChangeStatusDTO statusDTO){
+        return ResponseEntity.ok(profileService.changeStatus(statusDTO));
+    }
+
+
+
 
 
 }
