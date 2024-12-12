@@ -28,6 +28,14 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.updateKeys(dto,profileId));
     }
 
+    @GetMapping("/filter")
+    public ResponseEntity<?> getByFilter(@RequestBody ProfileDTO filter,
+                                         @RequestParam Integer page,
+                                         @RequestParam Integer size){
+        page = Math.max(page-1,0);
+        return ResponseEntity.ok(profileService.getByFilter(filter,page,size));
+    }
+
 
 
 }
