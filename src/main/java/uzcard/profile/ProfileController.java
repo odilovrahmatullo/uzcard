@@ -3,10 +3,7 @@ package uzcard.profile;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/profile")
@@ -18,6 +15,19 @@ public class ProfileController {
     public ResponseEntity<?> create(@Valid @RequestBody ProfileCreationDTO dto){
         return ResponseEntity.ok(profileService.create(dto));
     }
+
+    @PutMapping("/update-info/{profileId}")
+    public ResponseEntity<?> update(@Valid @RequestBody UpdateInfoDTO dto,
+                                    @PathVariable String profileId){
+        return ResponseEntity.ok(profileService.updateInfo(dto,profileId));
+    }
+
+    @PutMapping("/update-keys/{profileId}")
+    public ResponseEntity<?> update(@Valid @RequestBody UpdateKeysInfo dto,
+                                    @PathVariable String profileId){
+        return ResponseEntity.ok(profileService.updateKeys(dto,profileId));
+    }
+
 
 
 }

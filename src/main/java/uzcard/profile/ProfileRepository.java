@@ -1,6 +1,24 @@
 package uzcard.profile;
 
+import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ProfileRepository extends CrudRepository<ProfileEntity,String> {
+    @Query("from ProfileEntity where username = ?1 and status = 'ACTIVE' ")
+    ProfileEntity findByUsername(String username);
+
+    @Modifying
+    @Transactional
+    @Query("Update ProfileEntity Set name = ?2,surname = ?3 where id = ?1")
+    Integer updateInfo(String profileId,String name,String surname);
+
+    @Modifying
+    @Transactional
+    @Query("Update ProfileEntity Set username = ?2,password = ?3 where id = ?1")
+    Integer updateKeys(String profileId,String username,String password);
 }

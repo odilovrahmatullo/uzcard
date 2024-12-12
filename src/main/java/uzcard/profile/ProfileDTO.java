@@ -3,7 +3,6 @@ package uzcard.profile;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 

@@ -71,11 +71,11 @@
 			<version>10.21.0</version>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- Maven security-->
-		<dependency>
+		<!-- Maven spring security-->
+	<!--	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 
 	</dependencies>
 
