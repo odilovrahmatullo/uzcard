@@ -7,6 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import uzcard.exceptionhandler.AppBadException;
+import uzcard.exceptionhandler.AuthBadException;
+import uzcard.exceptionhandler.ResourceNotFoundException;
+import uzcard.util.jwt.JwtUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,6 +39,7 @@ public class ProfileService {
         entity.setStatus(ProfileStatus.ACTIVE);
         entity.setCreatedDate(LocalDateTime.now());
         profileRepository.save(entity);
+        dto.setPassword(entity.getPassword());
         return dto;
     }
 

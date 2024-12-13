@@ -3,6 +3,7 @@ package uzcard.profile;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,23 +13,27 @@ public class ProfileController {
     private ProfileService profileService;
 
     @PostMapping
+    //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> create(@Valid @RequestBody ProfileCreationDTO dto){
         return ResponseEntity.ok(profileService.create(dto));
     }
 
     @PutMapping("/update-info/{profileId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> update(@Valid @RequestBody UpdateInfoDTO dto,
                                     @PathVariable String profileId){
         return ResponseEntity.ok(profileService.updateInfo(dto,profileId));
     }
 
     @PutMapping("/update-keys/{profileId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> update(@Valid @RequestBody UpdateKeysInfo dto,
                                     @PathVariable String profileId){
         return ResponseEntity.ok(profileService.updateKeys(dto,profileId));
     }
 
     @GetMapping("/filter")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getByFilter(@RequestBody ProfileDTO filter,
                                          @RequestParam Integer page,
                                          @RequestParam Integer size){
@@ -37,12 +42,10 @@ public class ProfileController {
     }
 
     @PutMapping("/change-status")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> changeStatus(@Valid @RequestBody ChangeStatusDTO statusDTO){
         return ResponseEntity.ok(profileService.changeStatus(statusDTO));
     }
-
-
-
 
 
 }
