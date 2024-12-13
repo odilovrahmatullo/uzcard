@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import uzcard.exceptionhandler.ResourceNotFoundException;
-import uzcard.profile.ProfileEntity;
-import uzcard.profile.ProfileRepository;
+import uzcard.profile.entity.ProfileEntity;
+import uzcard.profile.repository.ProfileRepository;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired

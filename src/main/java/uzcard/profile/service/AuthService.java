@@ -1,9 +1,13 @@
-package uzcard.profile;
+package uzcard.profile.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import uzcard.exceptionhandler.AuthBadException;
+import uzcard.profile.entity.ProfileEntity;
+import uzcard.profile.repository.ProfileRepository;
+import uzcard.profile.dto.AuthDTO;
+import uzcard.profile.dto.AuthResponseDTO;
 import uzcard.util.jwt.JwtUtil;
 
 @Service

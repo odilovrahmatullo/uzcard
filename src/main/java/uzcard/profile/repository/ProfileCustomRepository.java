@@ -1,9 +1,12 @@
-package uzcard.profile;
+package uzcard.profile.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import uzcard.profile.dto.ProfileDTO;
+import uzcard.profile.entity.ProfileEntity;
+import uzcard.profile.dto.FilterResultDTO;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -55,7 +58,7 @@ public class ProfileCustomRepository {
         selectBuilder.append(condition);
         StringBuilder countBuilder = new StringBuilder("Select count(*) from ProfileEntity as p where 1=1 ");
         countBuilder.append(condition);
-        Query selectQuery = entityManager.createQuery(selectBuilder.toString(),ProfileEntity.class);
+        Query selectQuery = entityManager.createQuery(selectBuilder.toString(), ProfileEntity.class);
         selectQuery.setFirstResult(page*size);
         selectQuery.setMaxResults(size);
         Query countQuery = entityManager.createQuery(countBuilder.toString());

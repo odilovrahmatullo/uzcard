@@ -1,4 +1,6 @@
-package uzcard.profile;
+package uzcard.profile.dto;
+
+import uzcard.profile.enums.ProfileRole;
 
 public class AuthResponseDTO {
     private String name;

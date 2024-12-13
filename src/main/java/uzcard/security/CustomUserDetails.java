@@ -5,9 +5,9 @@ import jakarta.persistence.Enumerated;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import uzcard.profile.ProfileEntity;
-import uzcard.profile.ProfileRole;
-import uzcard.profile.ProfileStatus;
+import uzcard.profile.entity.ProfileEntity;
+import uzcard.profile.enums.ProfileRole;
+import uzcard.profile.enums.ProfileStatus;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

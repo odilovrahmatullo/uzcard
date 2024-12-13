@@ -1,4 +1,4 @@
-package uzcard.profile;
+package uzcard.profile.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

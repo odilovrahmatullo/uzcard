@@ -1,9 +1,11 @@
-package uzcard.profile;
+package uzcard.profile.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uzcard.util.jwt.JwtDTO;
+import uzcard.profile.dto.AuthDTO;
+import uzcard.profile.dto.AuthResponseDTO;
+import uzcard.profile.service.AuthService;
 
 @RestController
 @RequestMapping("/auth")

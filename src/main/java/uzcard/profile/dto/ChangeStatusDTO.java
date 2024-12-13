@@ -1,7 +1,8 @@
-package uzcard.profile;
+package uzcard.profile.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import uzcard.profile.enums.ProfileStatus;
 
 public class ChangeStatusDTO {
     @NotBlank(message = "not have access without profileId")

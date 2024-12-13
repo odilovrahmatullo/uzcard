@@ -1,19 +1,23 @@
-package uzcard.profile;
+package uzcard.profile.service;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import uzcard.exceptionhandler.AppBadException;
-import uzcard.exceptionhandler.AuthBadException;
-import uzcard.exceptionhandler.ResourceNotFoundException;
-import uzcard.util.jwt.JwtUtil;
+import uzcard.profile.entity.ProfileEntity;
+import uzcard.profile.repository.ProfileRepository;
+import uzcard.profile.dto.UpdateInfoDTO;
+import uzcard.profile.dto.UpdateKeysInfo;
+import uzcard.profile.dto.ChangeStatusDTO;
+import uzcard.profile.dto.FilterResultDTO;
+import uzcard.profile.dto.ProfileCreationDTO;
+import uzcard.profile.dto.ProfileDTO;
+import uzcard.profile.enums.ProfileRole;
+import uzcard.profile.enums.ProfileStatus;
+import uzcard.profile.repository.ProfileCustomRepository;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProfileService {
@@ -52,7 +56,7 @@ public class ProfileService {
     }
 
 
-    public FilterResultDTO<ProfileDTO> getByFilter(ProfileDTO filter,Integer page, Integer size) {
+    public FilterResultDTO<ProfileDTO> getByFilter(ProfileDTO filter, Integer page, Integer size) {
         return profileCustomRepository.filter(filter, page, size);
     }
 

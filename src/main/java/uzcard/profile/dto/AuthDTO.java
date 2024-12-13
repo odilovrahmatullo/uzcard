@@ -1,4 +1,4 @@
-package uzcard.profile;
+package uzcard.profile.dto;
 
 public class AuthDTO {
 
