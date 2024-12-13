@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import uzcard.util.jwt.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +26,8 @@ public class SpringConfig {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public static final String[] AUTH_WHITELIST = {
             "profile**", "profile/**", "auth**","auth/**"
@@ -48,9 +51,8 @@ public class SpringConfig {
                     .requestMatchers(AUTH_WHITELIST).permitAll()
                     .anyRequest()
                     .authenticated();
-        });
+        }).addFilterBefore(jwtAuthenticationFilter,UsernamePasswordAuthenticationFilter.class);
 
-        http.httpBasic(Customizer.withDefaults());
         http.csrf(AbstractHttpConfigurer:: disable); // csrf ochirilgan
         http.cors(AbstractHttpConfigurer :: disable); // cors ochirilgan
 
