@@ -4,10 +4,13 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import uzcard.exceptionhandler.AppBadException;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProfileService {
@@ -15,15 +18,19 @@ public class ProfileService {
     private ProfileRepository profileRepository;
     @Autowired
     private ProfileCustomRepository profileCustomRepository;
-   /* @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;*/
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public ProfileCreationDTO create(ProfileCreationDTO dto) {
+        ProfileEntity checkUsername = profileRepository.findByUsername(dto.getUsername());
+        if(checkUsername!=null){
+            throw new AppBadException("This username already exist, choose other !");
+        }
         ProfileEntity entity = new ProfileEntity();
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
-        // entity.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
-        entity.setPassword(dto.getPassword());
+        entity.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
+        //entity.setPassword(dto.getPassword());
         entity.setUsername(dto.getUsername());
         entity.setRole(ProfileRole.ROLE_MODERATOR);
         entity.setStatus(ProfileStatus.ACTIVE);
