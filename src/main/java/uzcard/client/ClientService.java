@@ -1,6 +1,5 @@
 package uzcard.client;
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +27,12 @@ public class ClientService {
     }
 
 
+    public String updateInfos(String clientId, UpdateInfoDTO dto) {
+        return "UPDATED "+clientRepository.updateInfo(clientId,dto.getName(),dto.getSurname(),dto.getMiddleName());
+    }
+
+    public String updateKeys(String clientId,UpdateKeysInfo  dto) {
+        return "UPDATED "+clientRepository.updateKeys(clientId,dto.getPassportSeries(),dto.getPassportNumber(),dto.getPhone());
+
+    }
 }
