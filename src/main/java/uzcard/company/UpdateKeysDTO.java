@@ -16,6 +16,4 @@ public class UpdateKeysDTO {
     @Pattern(regexp = ".*[a-zA-Z].*", message = "Password must contain at least one letter")
     @Pattern(regexp = ".*[^a-zA-Z0-9].*", message = "Password must contain at least one special character")
     private String password;
-
-
 }

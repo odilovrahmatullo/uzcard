@@ -1,5 +1,7 @@
 package uzcard.company;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -18,6 +20,7 @@ public class UpdateInfoDTO {
     @Size(min = 4,max = 13, message = "Invalid contact number")
     private String contact;
     @NotBlank(message = "Fill all fields")
+    @Enumerated(EnumType.STRING)
     private CompanyRole role;
     private String code;
 }

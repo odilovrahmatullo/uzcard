@@ -30,6 +30,12 @@ public class CompanyService {
     }
 
 
+    public String updateInfos(UpdateInfoDTO dto, String id) {
+        return "UPDATED "+companyRepository.updateInfos(id,dto.getCode(),dto.getContact(),dto.getName(),dto.getAddress(),
+        dto.getRole());
+    }
 
-
+    public String updateKeys(UpdateKeysDTO dto, String id) {
+        return "UPDATED "+companyRepository.updateKeys(id,bCryptPasswordEncoder.encode(dto.getPassword()),dto.getUsername());
+    }
 }
