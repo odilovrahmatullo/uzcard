@@ -1,5 +1,6 @@
 package uzcard.company;
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -30,6 +31,14 @@ public class CompanyController {
     public ResponseEntity<String> updateKeys(@RequestBody UpdateKeysDTO dto,
                                              @RequestParam String id ){
         return ResponseEntity.ok(companyService.updateKeys(dto,id));
+    }
+
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> getByPagination(@RequestParam Integer page,
+                                             @RequestParam Integer size){
+        page = Math.max(page-1,0);
+        return ResponseEntity.ok(companyService.getByPagination(page,size));
     }
 }
 
