@@ -3,7 +3,11 @@ package uzcard.client;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ClientCreationDTO {
 
    @Pattern(regexp = "^[a-zA-Z ]+$", message = "Name must contain only letters")
@@ -34,52 +38,4 @@ public class ClientCreationDTO {
    @Size(min = 9, max = 9, message = "Invalid passport number")
    @NotBlank(message = "Fill all fields")
    private String passportNumber;
-
-   public String getName() {
-      return name;
-   }
-
-   public void setName(String name) {
-      this.name = name;
-   }
-
-   public String getSurname() {
-      return surname;
-   }
-
-   public void setSurname(String surname) {
-      this.surname = surname;
-   }
-
-   public String getMiddleName() {
-      return middleName;
-   }
-
-   public void setMiddleName(String middleName) {
-      this.middleName = middleName;
-   }
-
-   public String getPhone() {
-      return phone;
-   }
-
-   public void setPhone(String phone) {
-      this.phone = phone;
-   }
-
-   public String getPassportSeries() {
-      return passportSeries;
-   }
-
-   public void setPassportSeries(String passportSeries) {
-      this.passportSeries = passportSeries;
-   }
-
-   public String getPassportNumber() {
-      return passportNumber;
-   }
-
-   public void setPassportNumber(String passportNumber) {
-      this.passportNumber = passportNumber;
-   }
 }

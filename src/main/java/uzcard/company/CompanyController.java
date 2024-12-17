@@ -20,6 +20,8 @@ public class CompanyController {
     public ResponseEntity<CompanyCreationDTO>create(@RequestBody CompanyCreationDTO dto){
         return ResponseEntity.ok(companyService.create(dto));
     }
+
+
 }
 
 

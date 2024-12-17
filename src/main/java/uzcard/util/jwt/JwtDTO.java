@@ -1,5 +1,10 @@
 package uzcard.util.jwt;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class JwtDTO {
     private String username;
     private String role;
@@ -8,9 +13,4 @@ public class JwtDTO {
         this.username = username;
         this.role = role;
     }
-
-    public String getUsername() {
-        return username; }
-
-    public String getRole() { return role; }
 }

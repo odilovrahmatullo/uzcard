@@ -3,7 +3,11 @@ package uzcard.client;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UpdateKeysInfo {
 
     @Pattern(regexp = "^\\+998\\d{9}$", message = "Phone number must start with +998")
@@ -19,31 +23,5 @@ public class UpdateKeysInfo {
     @Size(min = 9, max = 9, message = "Invalid passport number")
     @NotBlank(message = "Fill all fields")
     private String passportNumber;
-
-
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPassportSeries() {
-        return passportSeries;
-    }
-
-    public void setPassportSeries(String passportSeries) {
-        this.passportSeries = passportSeries;
-    }
-
-    public String getPassportNumber() {
-        return passportNumber;
-    }
-
-    public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
-    }
 }
 

@@ -1,4 +1,4 @@
-package uzcard.profile.dto;
+package uzcard.company;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UpdateKeysInfo {
+public class UpdateKeysDTO {
     @NotBlank(message = "Username must not be empty")
     @Size(min = 5, max = 20, message = "Username must be between 5 and 20 characters")
     private String username;
@@ -16,4 +16,6 @@ public class UpdateKeysInfo {
     @Pattern(regexp = ".*[a-zA-Z].*", message = "Password must contain at least one letter")
     @Pattern(regexp = ".*[^a-zA-Z0-9].*", message = "Password must contain at least one special character")
     private String password;
+
+
 }
