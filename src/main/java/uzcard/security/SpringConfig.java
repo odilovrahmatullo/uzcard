@@ -30,7 +30,7 @@ public class SpringConfig {
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public static final String[] AUTH_WHITELIST = {
-            "profile/**", "auth/**","client/**"
+            "/auth/**","/client/**"
 
     };
 
