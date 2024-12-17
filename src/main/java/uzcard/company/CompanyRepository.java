@@ -26,6 +26,11 @@ public interface CompanyRepository extends CrudRepository<CompanyEntity,String>,
      @Query("UPDATE CompanyEntity SET password = ?2,username = ?3 where id = ?1")
      Integer updateKeys(String id,String password,String username);
 
-     @Query("FROM CompanyEntity where visible = true")
+     @Query("FROM CompanyEntity where visible = true order by createdDate desc ")
      Page<CompanyEntity> getByPagination(Pageable pageable);
+
+     @Modifying
+     @Transactional
+     @Query("UPDATE CompanyEntity set visible = false where id = ?1")
+     Integer deleteBy(String id);
 }

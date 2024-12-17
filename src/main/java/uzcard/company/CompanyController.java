@@ -40,6 +40,13 @@ public class CompanyController {
         page = Math.max(page-1,0);
         return ResponseEntity.ok(companyService.getByPagination(page,size));
     }
+
+    @PutMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> delete(@PathVariable String id){
+        return ResponseEntity.ok(companyService.delete(id));
+    }
+
 }
 
 

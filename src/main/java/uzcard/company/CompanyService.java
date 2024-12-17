@@ -63,4 +63,8 @@ public class CompanyService {
         dto.setRole(entity.getRole());
         return dto;
     }
+
+    public String  delete(String id) {
+        return "DELETED "+companyRepository.deleteBy(id);
+    }
 }
